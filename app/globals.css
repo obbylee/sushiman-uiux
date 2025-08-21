@@ -1,26 +1,259 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Font Families */
+  /* Make sure these fonts are imported/linked in your Next.js project (e.g., in app/layout.tsx or via @import url() if using Google Fonts) */
+  --font-playfair-display: "Playfair Display", "serif";
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", "sans-serif";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-primary-color: #b1454a;
+  --color-secondary-color: #121212;
+  --color-black-200: #020202;
+  --color-black-300: #333333;
+  --color-black-400: #1f1e31;
+  --color-black-500: #555555;
+  --color-gray-100: #888888;
+  --color-color-creamson: #fff0de;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Background Images */
+  /* Ensure these images are located in your /public directory, e.g., /public/assets/about_bg1.png */
+  --image-about1: url("/assets/about_bg1.png");
+  --image-about2: url("/assets/about_bg2.png");
+  --image-popular-food: url("/assets/popular_bg.png");
+  --image-japanese-sushi: url("/assets/japanese_sushi.png");
+  --image-japanese-drink: url("/assets/japanese_drinks.png");
+  --image-subscribe: url("/assets/subscribe_bg.png");
+
+  /* Screens (Optional, if you need a custom named breakpoint 'wide') */
+  /* For most cases, you can use built-in breakpoints or arbitrary values like max-w-[1280px] */
+  --breakpoint-wide: 1280px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-color-creamson);
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.header__nav {
+  @apply flex overflow-hidden;
+}
+
+.header__logo {
+  @apply relative flex flex-1 p-[20px];
+}
+
+.header__logo h4 {
+  @apply pl-[30px] font-bold text-[24px] uppercase font-playfair-display text-white opacity-80;
+}
+
+.header__logo-overlay {
+  @apply absolute inset-0 w-full bg-primary-color -z-[1];
+}
+
+.header-menu {
+  @apply flex flex-1 p-5 items-center justify-end gap-16 list-none;
+}
+
+.header-menu li {
+  @apply font-medium font-plus-jakarta-sans text-secondary-color text-[20px] leading-5 uppercase cursor-pointer;
+}
+
+.header-menu li img {
+  @apply w-[24px] h-[24px] object-contain;
+}
+
+.hero {
+  @apply flex min-h-[calc(100vh_-_74px)] overflow-hidden;
+}
+
+.hero-image {
+  @apply flex flex-1 flex-col relative z-10  max-lg:w-full;
+}
+
+.hero-image img {
+  @apply min-w-[120%] h-full object-contain;
+}
+
+.hero-image h2 {
+  @apply absolute bottom-0 p-5 font-playfair-display font-bold text-white text-[120px] leading-[128px] max-sm:text-7xl max-sm:leading-relaxed;
+}
+
+.hero-image__overlay {
+  @apply absolute inset-0 w-full bg-primary-color -z-10;
+}
+
+.hero-content {
+  @apply flex flex-1 flex-col justify-between;
+}
+
+.hero-content-info {
+  @apply flex flex-1 flex-col p-16 justify-center;
+}
+
+.hero-content-info h1 {
+  @apply text-7xl font-semibold font-playfair-display text-secondary-color max-sm:text-6xl;
+}
+
+.hero-content-info p {
+  @apply mt-8 mr-0 mb-0 ml-8 font-plus-jakarta-sans text-secondary-color text-lg font-normal max-sm:my-8 max-sm:mx-0;
+}
+
+.hero-content__buttons {
+  @apply mt-10 mr-0 mb-0 ml-10 flex flex-wrap gap-9 max-sm:my-6 max-sm:mx-0;
+}
+
+.hero-content__order-button {
+  @apply p-5 rounded-[36px] min-w-[212px] outline-none border-none bg-secondary-color cursor-pointer text-white font-bold text-lg;
+}
+
+.hero-content__play-button {
+  @apply border-none outline-none bg-transparent flex items-center text-base text-black-200 font-plus-jakarta-sans cursor-pointer;
+}
+
+.hero-content__testimonial {
+  @apply py-8 px-16 flex flex-wrap gap-5 bg-white max-sm:p-8;
+}
+
+.hero-content__customer {
+  @apply flex flex-1 justify-center items-center gap-2.5;
+}
+
+.hero-content__customer h4 {
+  @apply text-[64px] font-normal font-playfair-display;
+}
+
+.hero-content__customer p {
+  @apply text-base font-normal font-plus-jakarta-sans text-secondary-color opacity-50;
+}
+
+.hero-content__review {
+  @apply flex flex-1 items-center gap-2.5 pl-5 border-l-2 border-l-slate-200 min-w-[200px];
+}
+
+.hero-content__review p {
+  @apply text-xs font-normal font-plus-jakarta-sans text-secondary-color opacity-80;
+}
+
+.about-us {
+  @apply flex min-h-[720px] overflow-hidden;
+}
+
+.about-us__image {
+  @apply flex flex-1 flex-col justify-center bg-white relative;
+}
+
+.about-us__image-sushi3 {
+  @apply py-8 px-16 flex flex-1 items-center border-b-8 border-solid border-color-creamson;
+}
+
+.about-us__button {
+  @apply absolute flex gap-8 justify-center items-center right-0 py-3 px-8 min-h-[64px] bg-secondary-color rounded-s-3xl border-0 outline-none cursor-pointer;
+}
+
+.sushi__title {
+  @apply text-6xl font-semibold font-playfair-display text-secondary-color mt-4;
+}
+
+.sushi__subtitle {
+  @apply text-lg text-primary-color opacity-80 font-normal font-plus-jakarta-sans -tracking-tight;
+}
+
+.sushi__description {
+  @apply text-lg font-normal font-plus-jakarta-sans leading-9 -tracking-tight text-secondary-color opacity-80 my-8 mx-0;
+}
+
+.popular-foods {
+  @apply flex flex-col p-16 bg-primary-color overflow-hidden;
+}
+
+.popular-foods__title {
+  @apply text-6xl leading-tight font-playfair-display font-semibold text-white text-center;
+}
+
+.popular-foods__filters {
+  @apply mt-12 max-w-full overflow-x-auto flex justify-center gap-6;
+}
+
+.popular-foods__filter-btn {
+  @apply py-3 px-7 gap-2.5 flex items-center bg-white/5 border-2 border-white/5 rounded-3xl text-base text-white font-medium font-plus-jakarta-sans cursor-pointer hover:bg-white hover:text-primary-color max-sm:min-w-max;
+}
+
+.popular-foods__filter-btn.active {
+  @apply bg-white text-primary-color;
+}
+
+.popular-foods__catalogue {
+  @apply flex justify-center items-end flex-wrap gap-14 mt-16;
+}
+
+.popular-foods__card {
+  @apply flex flex-col items-center p-[38px] min-w-[260px] h-fit rounded-3xl bg-white/5 border border-solid border-white/20 max-sm:min-w-full;
+}
+
+.popular-foods__card-image {
+  @apply w-[110px] h-[84px] object-contain;
+}
+
+.popular-foods__card-title {
+  @apply mt-12 font-semibold text-2xl font-playfair-display text-white text-center;
+}
+
+.popular-foods__card-details {
+  @apply w-full mt-8;
+}
+
+.popular-foods__card-rating {
+  @apply flex items-center gap-2;
+}
+
+.popular-foods__card-rating img {
+  @apply w-[24px] h-[24px] object-contain;
+}
+
+.popular-foods__card-rating p {
+  @apply text-xl font-light font-plus-jakarta-sans text-white;
+}
+
+.popular-foods__card-price {
+  @apply text-xl font-medium font-plus-jakarta-sans text-white;
+}
+
+.popular-foods__card.active-card {
+  @apply min-w-[340px] bg-white max-sm:min-w-full;
+}
+
+.popular-foods__card.active-card .popular-foods__card-image {
+  @apply w-[214px] h-[160px];
+}
+
+.popular-foods__card.active-card .popular-foods__card-title {
+  @apply text-black-500 text-4xl;
+}
+
+.popular-foods__card.active-card .popular-foods__card-rating img {
+  @apply w-[32px] h-[32px];
+}
+
+.popular-foods__card.active-card .popular-foods__card-rating p {
+  @apply text-2xl text-gray-100;
+}
+
+.popular-foods__card.active-card .popular-foods__card-price {
+  @apply text-2xl text-secondary-color;
+}
+
+.popular-foods__button {
+  @apply flex justify-center items-center gap-5 py-5 px-8 mt-20 mx-auto font-medium font-plus-jakarta-sans text-lg text-white border-none outline-none bg-secondary-color rounded-3xl cursor-pointer;
+}
+
+.popular-foods__button img {
+  @apply w-[21px] h-[21px] object-contain;
 }
