@@ -227,27 +227,19 @@ body {
 }
 
 .popular-foods__card.active-card {
-  @apply min-w-[340px] bg-white max-sm:min-w-full;
-}
-
-.popular-foods__card.active-card .popular-foods__card-image {
-  @apply w-[214px] h-[160px];
+  @apply bg-white max-sm:min-w-full;
 }
 
 .popular-foods__card.active-card .popular-foods__card-title {
-  @apply text-black-500 text-4xl;
-}
-
-.popular-foods__card.active-card .popular-foods__card-rating img {
-  @apply w-[32px] h-[32px];
+  @apply text-secondary-color;
 }
 
 .popular-foods__card.active-card .popular-foods__card-rating p {
-  @apply text-2xl text-gray-100;
+  @apply text-secondary-color;
 }
 
 .popular-foods__card.active-card .popular-foods__card-price {
-  @apply text-2xl text-secondary-color;
+  @apply text-secondary-color;
 }
 
 .popular-foods__button {

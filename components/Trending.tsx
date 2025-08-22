@@ -1,3 +1,5 @@
+"use client";
+
 import {
   arrowHorizontal,
   arrowVertical,
@@ -7,14 +9,18 @@ import {
 } from "@/assets";
 import { trendingDrinks, trendingSushis } from "../constants";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 const Trending = () => {
   return (
     <section className="relative flex flex-col overflow-hidden" id="food">
       <section className="w-full min-h-[640px] flex flex-row max-sm:flex-col">
-        <div
-          data-aos="fade-right"
+        <motion.div
           className="flex flex-1 justify-center flex-col py-8 px-16 max-sm:p-8"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
           <p className="sushi__subtitle">What’s Trending / トレンド</p>
 
@@ -42,7 +48,7 @@ const Trending = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
         <div className="flex-center relative flex-1 py-8 px-16 bg-white bg-[url(/assets/japanese_sushi.png)] bg-no-repeat bg-contain bg-center max-sm:w-full max-sm:bg-cover max-sm:p-16">
           <Image
@@ -70,14 +76,17 @@ const Trending = () => {
         </div>
       </section>
 
-      <div
-        data-aos="zoom-in"
+      <motion.div
         className="hidden md:flex md:justify-center md:items-center absolute top-[44%] left-[44%] z-10 w-[160px] h-[160px] rounded-full bg-secondary-color cursor-pointer"
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
         <p className="text-lg font-medium font-plus-jakarta-sans text-white">
           Discover
         </p>
-      </div>
+      </motion.div>
 
       <section className="w-full min-h-[640px] flex flex-row max-sm:flex-col-reverse">
         <div className="flex-center relative flex-1 py-8 px-16 bg-white bg-[url(/assets/japanese_drinks.png)] bg-no-repeat bg-contain bg-center max-sm:w-full max-sm:bg-cover max-sm:p-16">
@@ -105,9 +114,12 @@ const Trending = () => {
           </div>
         </div>
 
-        <div
-          data-aos="fade-left"
+        <motion.div
           className="flex flex-1 justify-center flex-col py-8 px-16 max-sm:p-8"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
           <p className="sushi__subtitle">What’s Trending / トレンド</p>
 
@@ -135,7 +147,7 @@ const Trending = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       </section>
     </section>
   );

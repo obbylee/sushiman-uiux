@@ -1,24 +1,42 @@
+"use client";
+
 import Image from "next/image";
-import { playCircle, sushi1, user } from "../assets";
+import { playCircle, sushi1, user } from "@/assets";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
     <section className="hero max-lg:flex-col">
       {/* hero image */}
-      <div className="hero-image">
-        <Image src={sushi1} alt="sushi" priority={true} data-aos="fade-up" />
-        <h2 data-aos="fade-up">
+      <motion.div
+        className="hero-image"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Image src={sushi1} alt="sushi" priority={true} />
+
+        <motion.h2
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           日 <br />
           本 <br />食
-        </h2>
+        </motion.h2>
 
         {/* hero image overlay */}
         <div className="hero-image__overlay"></div>
-      </div>
+      </motion.div>
 
       {/* hero content */}
       <div className="hero-content">
-        <div className="hero-content-info max-sm:p-8" data-aos="fade-left">
+        <motion.div // Animate the main content info
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="hero-content-info max-sm:p-8"
+        >
           <h1>Feel the taste of Japanese food</h1>
           <p>
             Feel the taste of the most popular Japanese food from anywhere and
@@ -26,8 +44,18 @@ const Hero = () => {
           </p>
 
           <div className="hero-content__buttons">
-            <button className="hero-content__order-button">Order Now</button>
-            <button className="hero-content__play-button">
+            <motion.button
+              whileHover={{ scale: 1.05 }} // Subtle hover effect
+              whileTap={{ scale: 0.95 }} // Subtle tap effect
+              className="hero-content__order-button"
+            >
+              Order Now
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hero-content__play-button"
+            >
               <Image
                 src={playCircle}
                 alt="sushi"
@@ -36,12 +64,17 @@ const Hero = () => {
                 className="object-contain mr-3"
               />
               How to Order
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {/* testimonial */}
-        <div className="hero-content__testimonial" data-aos="fade-up">
+        <motion.div // Animate the testimonial section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="hero-content__testimonial"
+        >
           <div className="hero-content__customer">
             <h4>
               24<span>k+</span>
@@ -58,11 +91,11 @@ const Hero = () => {
               className="object-contain"
             />
             <p>
-              "This is the best Japanese food delivery service that ever
-              existed."
+              &quot;This is the best Japanese food delivery service that ever
+              existed.&quot;
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
